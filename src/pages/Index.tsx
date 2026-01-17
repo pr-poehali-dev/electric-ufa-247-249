@@ -1,8 +1,27 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import Icon from "@/components/ui/icon";
+import { useToast } from "@/hooks/use-toast";
 
 const Index = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    problem: ""
+  });
+  const { toast } = useToast();
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    toast({
+      title: "Заявка отправлена!",
+      description: "Мы свяжемся с вами в ближайшие 5 минут",
+    });
+    setFormData({ name: "", phone: "", problem: "" });
+  };
   const services = [
     {
       icon: "Zap",
@@ -65,8 +84,8 @@ const Index = () => {
             <div className="hidden md:flex items-center gap-4">
               <div className="text-right">
                 <p className="text-sm text-orange-200">Звоните сейчас</p>
-                <a href="tel:+73472000000" className="text-2xl font-bold hover:text-primary transition-colors">
-                  +7 (347) 200-00-00
+                <a href="tel:+79173403022" className="text-2xl font-bold hover:text-primary transition-colors">
+                  +7 (917) 340-30-22
                 </a>
               </div>
             </div>
@@ -241,50 +260,128 @@ const Index = () => {
 
       <section className="py-20 bg-gradient-to-br from-primary to-orange-600 text-white" id="contacts">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center space-y-8">
-            <h2 className="text-4xl md:text-5xl font-bold">Контакты</h2>
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">Оставьте заявку</h2>
             
-            <div className="bg-white/10 backdrop-blur rounded-2xl p-8 md:p-12 space-y-8">
+            <div className="grid md:grid-cols-2 gap-8">
+              <Card className="bg-white/95 backdrop-blur border-none">
+                <CardContent className="p-8">
+                  <h3 className="text-2xl font-bold text-secondary mb-6">Форма быстрой связи</h3>
+                  <form onSubmit={handleSubmit} className="space-y-5">
+                    <div>
+                      <label className="block text-sm font-semibold text-secondary mb-2">Ваше имя</label>
+                      <Input 
+                        value={formData.name}
+                        onChange={(e) => setFormData({...formData, name: e.target.value})}
+                        placeholder="Иван Иванов"
+                        className="h-12 text-base"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-semibold text-secondary mb-2">Телефон</label>
+                      <Input 
+                        type="tel"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                        placeholder="+7 (917) 340-30-22"
+                        className="h-12 text-base"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-semibold text-secondary mb-2">Опишите проблему</label>
+                      <Textarea 
+                        value={formData.problem}
+                        onChange={(e) => setFormData({...formData, problem: e.target.value})}
+                        placeholder="Не работает розетка в комнате..."
+                        rows={4}
+                        className="text-base resize-none"
+                        required
+                      />
+                    </div>
+                    <Button 
+                      type="submit" 
+                      className="w-full bg-primary hover:bg-primary/90 text-white font-bold text-lg py-6 rounded-xl shadow-lg"
+                    >
+                      <Icon name="Send" size={22} className="mr-2" />
+                      Отправить заявку
+                    </Button>
+                    <p className="text-sm text-gray-600 text-center">
+                      Перезвоним в течение 5 минут
+                    </p>
+                  </form>
+                </CardContent>
+              </Card>
+
               <div className="space-y-6">
-                <div className="flex items-center justify-center gap-4">
-                  <Icon name="Phone" size={32} />
-                  <a 
-                    href="tel:+73472000000" 
-                    className="text-3xl md:text-4xl font-bold hover:text-orange-200 transition-colors"
+                <div className="bg-white/10 backdrop-blur rounded-2xl p-6 space-y-4">
+                  <div className="flex items-center gap-4">
+                    <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center">
+                      <Icon name="Phone" size={28} />
+                    </div>
+                    <div>
+                      <p className="text-sm text-orange-200">Телефон</p>
+                      <a 
+                        href="tel:+79173403022" 
+                        className="text-2xl font-bold hover:text-orange-200 transition-colors"
+                      >
+                        +7 (917) 340-30-22
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-white/10 backdrop-blur rounded-2xl p-6 space-y-4">
+                  <div className="flex items-center gap-4">
+                    <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center">
+                      <Icon name="Clock" size={28} />
+                    </div>
+                    <div>
+                      <p className="text-sm text-orange-200">Режим работы</p>
+                      <p className="text-xl font-bold">Круглосуточно, без выходных</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-white/10 backdrop-blur rounded-2xl p-6 space-y-4">
+                  <div className="flex items-center gap-4">
+                    <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center">
+                      <Icon name="MapPin" size={28} />
+                    </div>
+                    <div>
+                      <p className="text-sm text-orange-200">Адрес</p>
+                      <p className="text-xl font-bold">г. Уфа и пригород</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-white/10 backdrop-blur rounded-2xl p-6 space-y-4">
+                  <div className="flex items-center gap-4">
+                    <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center">
+                      <Icon name="Mail" size={28} />
+                    </div>
+                    <div>
+                      <p className="text-sm text-orange-200">Email</p>
+                      <p className="text-xl font-bold">elektrik.ufa24@mail.ru</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex gap-4 pt-4">
+                  <Button 
+                    className="flex-1 bg-white text-primary hover:bg-orange-50 text-base px-6 py-6 rounded-xl shadow-xl"
                   >
-                    +7 (347) 200-00-00
-                  </a>
-                </div>
-                
-                <p className="text-xl text-orange-100">Круглосуточно, без выходных</p>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button 
-                  size="lg" 
-                  className="bg-white text-primary hover:bg-orange-50 text-lg px-8 py-6 rounded-xl shadow-xl hover:shadow-2xl transition-all hover:scale-105"
-                >
-                  <Icon name="Phone" size={24} className="mr-2" />
-                  Позвонить сейчас
-                </Button>
-                <Button 
-                  size="lg"
-                  variant="outline"
-                  className="border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-6 rounded-xl transition-all"
-                >
-                  <Icon name="MessageSquare" size={24} className="mr-2" />
-                  Telegram
-                </Button>
-              </div>
-
-              <div className="pt-8 border-t border-white/20 space-y-4">
-                <div className="flex items-center justify-center gap-3 text-orange-100">
-                  <Icon name="MapPin" size={24} />
-                  <span className="text-lg">г. Уфа и пригород</span>
-                </div>
-                <div className="flex items-center justify-center gap-3 text-orange-100">
-                  <Icon name="Mail" size={24} />
-                  <span className="text-lg">elektrik.ufa24@mail.ru</span>
+                    <Icon name="MessageSquare" size={20} className="mr-2" />
+                    Telegram
+                  </Button>
+                  <Button 
+                    variant="outline"
+                    className="flex-1 border-2 border-white text-white hover:bg-white hover:text-primary text-base px-6 py-6 rounded-xl"
+                  >
+                    <Icon name="MessageCircle" size={20} className="mr-2" />
+                    WhatsApp
+                  </Button>
                 </div>
               </div>
             </div>
