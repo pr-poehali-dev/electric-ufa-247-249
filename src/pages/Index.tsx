@@ -116,20 +116,11 @@ const Index = () => {
               Работаем даже ночью и в выходные.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
-              <Button 
-                onClick={scrollToContacts}
-                size="lg" 
-                className="bg-primary hover:bg-primary/90 text-white text-lg px-8 py-6 rounded-xl shadow-xl hover:shadow-2xl transition-all hover:scale-105"
-              >
-                <Icon name="Phone" size={24} className="mr-2" />
-                Вызвать электрика
-              </Button>
+            <div className="flex justify-center pt-4">
               <Button 
                 asChild
-                variant="outline" 
                 size="lg"
-                className="border-2 border-secondary text-secondary hover:bg-secondary hover:text-white text-lg px-8 py-6 rounded-xl transition-all"
+                className="bg-primary hover:bg-primary/90 text-white text-lg px-8 py-6 rounded-xl shadow-xl hover:shadow-2xl transition-all hover:scale-105"
               >
                 <a href="tel:+79173403022">
                   <Icon name="Phone" size={24} className="mr-2" />
