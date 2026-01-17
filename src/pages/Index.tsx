@@ -126,12 +126,15 @@ const Index = () => {
                 Вызвать электрика
               </Button>
               <Button 
+                asChild
                 variant="outline" 
                 size="lg"
                 className="border-2 border-secondary text-secondary hover:bg-secondary hover:text-white text-lg px-8 py-6 rounded-xl transition-all"
               >
-                <Icon name="MessageCircle" size={24} className="mr-2" />
-                Написать в WhatsApp
+                <a href="tel:+79173403022">
+                  <Icon name="Phone" size={24} className="mr-2" />
+                  Позвонить
+                </a>
               </Button>
             </div>
           </div>
