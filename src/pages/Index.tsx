@@ -22,6 +22,10 @@ const Index = () => {
     });
     setFormData({ name: "", phone: "", problem: "" });
   };
+
+  const scrollToContacts = () => {
+    document.getElementById('contacts')?.scrollIntoView({ behavior: 'smooth' });
+  };
   const services = [
     {
       icon: "Zap",
@@ -114,6 +118,7 @@ const Index = () => {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
               <Button 
+                onClick={scrollToContacts}
                 size="lg" 
                 className="bg-primary hover:bg-primary/90 text-white text-lg px-8 py-6 rounded-xl shadow-xl hover:shadow-2xl transition-all hover:scale-105"
               >
