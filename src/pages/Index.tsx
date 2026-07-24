@@ -74,21 +74,21 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-orange-50">
-      <header className="bg-secondary text-white sticky top-0 z-50 shadow-lg">
+    <div className="min-h-screen bg-gradient-to-b from-white to-yellow-50">
+      <header className="bg-secondary text-white sticky top-0 z-50 shadow-lg border-b-4 border-accent">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <Icon name="Zap" className="text-primary" size={32} />
+              <Icon name="Zap" className="text-accent" size={32} />
               <div>
                 <h1 className="text-2xl font-bold">ЭЛЕКТРИК УФА 24/7</h1>
-                <p className="text-sm text-orange-200">Срочный выезд в любое время</p>
+                <p className="text-sm text-accent">Срочный выезд в любое время</p>
               </div>
             </div>
             <div className="hidden md:flex items-center gap-4">
               <div className="text-right">
-                <p className="text-sm text-orange-200">Звоните сейчас</p>
-                <a href="tel:+79173403022" className="text-2xl font-bold hover:text-primary transition-colors">
+                <p className="text-sm text-accent">Звоните сейчас</p>
+                <a href="tel:+79173403022" className="text-2xl font-bold hover:text-accent transition-colors">
                   +7 (917) 340-30-22
                 </a>
               </div>
@@ -98,12 +98,12 @@ const Index = () => {
       </header>
 
       <section className="relative py-20 md:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-100 via-white to-orange-50 opacity-70"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-white to-accent/20 opacity-70"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center space-y-8 animate-fade-in">
-            <div className="inline-flex items-center gap-2 bg-primary/10 px-6 py-3 rounded-full">
-              <Icon name="Clock" className="text-primary" size={24} />
-              <span className="text-primary font-semibold">Работаем круглосуточно</span>
+            <div className="inline-flex items-center gap-2 bg-accent px-6 py-3 rounded-full shadow-lg">
+              <Icon name="Clock" className="text-secondary" size={24} />
+              <span className="text-secondary font-bold">Работаем круглосуточно</span>
             </div>
             
             <h2 className="text-5xl md:text-7xl font-extrabold text-secondary leading-tight">
@@ -120,7 +120,7 @@ const Index = () => {
               <Button 
                 asChild
                 size="lg"
-                className="bg-primary hover:bg-primary/90 text-white text-lg px-8 py-6 rounded-xl shadow-xl hover:shadow-2xl transition-all hover:scale-105"
+                className="bg-primary hover:bg-primary/90 text-white text-lg px-8 py-6 rounded-xl shadow-xl hover:shadow-2xl transition-all hover:scale-110"
               >
                 <a href="tel:+79173403022">
                   <Icon name="Phone" size={24} className="mr-2" />
@@ -136,10 +136,10 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {advantages.map((item, index) => (
-              <Card key={index} className="border-none shadow-md hover:shadow-xl transition-shadow">
+              <Card key={index} className="border-none shadow-md hover:shadow-xl transition-all hover:-translate-y-1">
                 <CardContent className="flex flex-col items-center text-center p-6 space-y-3">
-                  <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
-                    <Icon name={item.icon} className="text-primary" size={32} />
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-lg">
+                    <Icon name={item.icon} className="text-white" size={32} />
                   </div>
                   <p className="font-semibold text-secondary">{item.text}</p>
                 </CardContent>
@@ -160,10 +160,10 @@ const Index = () => {
             {services.map((service, index) => (
               <Card 
                 key={index} 
-                className="hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 hover:border-primary/50"
+                className="hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 hover:border-primary"
               >
                 <CardContent className="p-6 space-y-4">
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary to-orange-600 flex items-center justify-center">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-md">
                     <Icon name={service.icon} className="text-white" size={28} />
                   </div>
                   <h3 className="text-xl font-bold text-secondary">{service.title}</h3>
@@ -194,22 +194,22 @@ const Index = () => {
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-                <div className="bg-white/10 backdrop-blur rounded-xl p-6 space-y-3">
+                <div className="bg-white/10 backdrop-blur rounded-xl p-6 space-y-3 border border-accent/30">
                   <div className="flex items-center gap-3">
-                    <Icon name="Award" className="text-primary" size={32} />
+                    <Icon name="Award" className="text-accent" size={32} />
                     <h3 className="text-2xl font-bold">Профессионализм</h3>
                   </div>
-                  <p className="text-orange-100">
+                  <p className="text-white/80">
                     Все мастера с профильным образованием и опытом от 5 лет
                   </p>
                 </div>
                 
-                <div className="bg-white/10 backdrop-blur rounded-xl p-6 space-y-3">
+                <div className="bg-white/10 backdrop-blur rounded-xl p-6 space-y-3 border border-accent/30">
                   <div className="flex items-center gap-3">
-                    <Icon name="ShieldCheck" className="text-primary" size={32} />
+                    <Icon name="ShieldCheck" className="text-accent" size={32} />
                     <h3 className="text-2xl font-bold">Надежность</h3>
                   </div>
-                  <p className="text-orange-100">
+                  <p className="text-white/80">
                     Гарантия 2 года на все выполненные работы и материалы
                   </p>
                 </div>
@@ -257,7 +257,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-br from-primary to-orange-600 text-white" id="contacts">
+      <section className="py-20 bg-gradient-to-br from-primary via-red-500 to-secondary text-white" id="contacts">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">Оставьте заявку</h2>
@@ -320,10 +320,10 @@ const Index = () => {
                       <Icon name="Phone" size={28} />
                     </div>
                     <div>
-                      <p className="text-sm text-orange-200">Телефон</p>
+                      <p className="text-sm text-yellow-200">Телефон</p>
                       <a 
                         href="tel:+79173403022" 
-                        className="text-2xl font-bold hover:text-orange-200 transition-colors"
+                        className="text-2xl font-bold hover:text-yellow-200 transition-colors"
                       >
                         +7 (917) 340-30-22
                       </a>
@@ -337,7 +337,7 @@ const Index = () => {
                       <Icon name="Clock" size={28} />
                     </div>
                     <div>
-                      <p className="text-sm text-orange-200">Режим работы</p>
+                      <p className="text-sm text-yellow-200">Режим работы</p>
                       <p className="text-xl font-bold">Круглосуточно, без выходных</p>
                     </div>
                   </div>
@@ -349,7 +349,7 @@ const Index = () => {
                       <Icon name="MapPin" size={28} />
                     </div>
                     <div>
-                      <p className="text-sm text-orange-200">Адрес</p>
+                      <p className="text-sm text-yellow-200">Адрес</p>
                       <p className="text-xl font-bold">г. Уфа и пригород</p>
                     </div>
                   </div>
@@ -361,7 +361,7 @@ const Index = () => {
                       <Icon name="Mail" size={28} />
                     </div>
                     <div>
-                      <p className="text-sm text-orange-200">Email</p>
+                      <p className="text-sm text-yellow-200">Email</p>
                       <p className="text-xl font-bold">elektrik.ufa24@mail.ru</p>
                     </div>
                   </div>
@@ -369,7 +369,7 @@ const Index = () => {
 
                 <div className="flex gap-4 pt-4">
                   <Button 
-                    className="flex-1 bg-white text-primary hover:bg-orange-50 text-base px-6 py-6 rounded-xl shadow-xl"
+                    className="flex-1 bg-white text-primary hover:bg-yellow-50 text-base px-6 py-6 rounded-xl shadow-xl"
                   >
                     <Icon name="MessageSquare" size={20} className="mr-2" />
                     Telegram
@@ -394,7 +394,7 @@ const Index = () => {
             <Icon name="Zap" className="text-primary" size={28} />
             <span className="text-xl font-bold">ЭЛЕКТРИК УФА 24/7</span>
           </div>
-          <p className="text-orange-200">© 2024 Все права защищены</p>
+          <p className="text-yellow-200">© 2024 Все права защищены</p>
         </div>
       </footer>
     </div>
